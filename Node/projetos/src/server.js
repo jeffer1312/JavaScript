@@ -2,11 +2,38 @@ const port = 3003;
 
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser')
+const bancoDeDados = require('./bancoDeDados')
 
-app.get('/produtos', (req, res, next) => {
-    res.send({ nome: 'Notebook', preco: 123.45 }) //converte para json
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.get('/produtos', (req, res) => {
+    res.send(bancoDeDados.getProdutos())
+})
+app.get('/produtos/:id', (req, res) => {
+    res.send(bancoDeDados.getProduto(req.params.id))
 })
 
+app.post('/produtos', (req, res) => {
+    const produto = bancoDeDados.salvarProduto({
+        nome: req.body.nome,
+        preco: req.body.preco
+    })
+    res.send(produto) //json
+})
+app.put('/produtos/:id', (req, res) => {
+    const produto = bancoDeDados.salvarProduto({
+        id: req.params.id,
+        nome: req.body.nome,
+        preco: req.body.preco
+    })
+    res.send(produto) //json
+})
+app.delete('/produtos/:id', (req, res) => {
+    const produto = bancoDeDados.excluirProdutos(req.params.id)
+    res.send(produto) //json
+})
 app.listen(port, () => {
     console.log(`Servidor executando na porta ${port}`)
 })
