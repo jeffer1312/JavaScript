@@ -1,0 +1,13 @@
+{
+    "name": "funcionarios",
+    "version": "1.0.0",
+    "main": "funcionarios.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "nodemon",
+        "dev": "nodemon"
+    },
+    "dependencies": {
+        "axios": "^0.19.2"
+    }
+}
