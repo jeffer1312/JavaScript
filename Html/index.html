@@ -20,18 +20,20 @@
       <a href="exercicios/listas.html">listas</a>
       <a href="exercicios/listas2.html">listas 2</a>
       <a href="exercicios/links.html">Links</a>
+      <a href="form/form.html">Formulario</a>
+      <a href="exercicios/imagens.html">Imagens</a>
     </nav>
     <section id="conteudo"></section>
     <script>
-      document.querySelectorAll("a").forEach(link => {
+      document.querySelectorAll("a").forEach((link) => {
         const conteudo = document.getElementById("conteudo");
 
-        link.onclick = function(e) {
+        link.onclick = function (e) {
           e.preventDefault();
 
           fetch(link.href)
-            .then(resp => resp.text())
-            .then(html => (conteudo.innerHTML = html));
+            .then((resp) => resp.text())
+            .then((html) => (conteudo.innerHTML = html));
         };
       });
     </script>
