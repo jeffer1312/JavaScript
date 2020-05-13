@@ -1,0 +1,17 @@
+{
+  "name": "form",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "4.16.3"
+  },
+  "scripts": {
+    "dev": " nodemon server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports"
+  },
+  "devDependencies": {
+    "sucrase": "^3.14.0"
+  }
+}
